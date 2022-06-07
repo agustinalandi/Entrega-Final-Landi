@@ -32,3 +32,9 @@ def crear_pedido(request):
             )
             context = {'nuevo_pedido':nuevo_pedido}
         return render(request, 'crear_pedido.html', context=context)
+
+def buscar_pedido(request):
+    #pedido = Pedido.objects.get()
+    pedidos = Pedido.objects.filter(prenda__icontains = request.GET['search'])
+    context = {'pedidos':pedidos}
+    return render(request, 'buscar_pedido.html', context = context)

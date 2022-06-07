@@ -1,13 +1,14 @@
 {% extends 'padre.html' %}
 
 {% block titulo %}
-    Lista Pedidos
+    Buscar Pedido
 {% endblock %}
 
 {% block contenido %}
 
+Aca va el contenido de buscar pedidos
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
-        {% for pedido in lista_pedidos %}
+        {% for pedido in pedidos %}
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src=".../100px180/" alt="Card image cap">
                 <div class="card-body">
@@ -21,4 +22,3 @@
     </div>
 
 {% endblock %}
-
