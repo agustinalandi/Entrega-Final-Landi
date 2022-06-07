@@ -1,0 +1,32 @@
+{% extends 'padre.html' %}
+
+{% block titulo %}
+    Crear Pedido
+{% endblock %}
+
+{% block contenido %}
+
+<h1> Aca va la informacion de crear pedido </h1>
+
+{% if form %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}} 
+        </table>
+        <input type="submit", value="Enviar">
+    </form>
+{% elif nuevo_pedido %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{nuevo_pedido.prenda}}</h5>
+            <p class="card-text">{{nuevo_pedido.fecha_pedido}}</p>
+            <p class="card-text">{{nuevo_pedido.precio}}</p>
+        </div>
+    </div>
+{% endif %}
+
+
+
+{% endblock %}
