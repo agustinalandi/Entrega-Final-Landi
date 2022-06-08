@@ -1,11 +1,12 @@
 {% extends 'padre.html' %}
 
 {% block titulo %}
-    Crear Pedido
+    Crear Prenda
 {% endblock %}
 
 {% block contenido %}
 
+    Prenda creada a medida:
     {% if form %}
         <h2 style="margin-left:25rem;">Complete los datos del nuevo pedido:</h2>
         <form method="POST" action="" style="margin-left:35rem;margin-top:7rem">
@@ -15,8 +16,8 @@
             </table>
             <input type="submit", value="Enviar">
         </form>
-    {% elif nuevo_pedido %}
-        <h2 style="margin-left:25rem;">Nuevo pedido creado correctamente.</h2>
+    {% elif nueva_prenda %}
+        <h2 style="margin-left:25rem;">Nueva prenda creada correctamente.</h2>
         <div class="card" style="width: 18rem; margin-top: 4rem; margin-left: 30rem;">
             <img class="card-img-top" src=".../100px180/" alt="Card image cap">
             <div class="card-body">

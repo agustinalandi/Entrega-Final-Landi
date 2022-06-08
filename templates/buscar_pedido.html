@@ -6,7 +6,6 @@
 
 {% block contenido %}
 
-Aca va el contenido de buscar pedidos
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
         {% for pedido in pedidos %}
             <div class="card" style="width: 18rem;">
@@ -20,5 +19,7 @@ Aca va el contenido de buscar pedidos
             </div>
         {% endfor %}
     </div>
+
+    {{errors}}
 
 {% endblock %}
