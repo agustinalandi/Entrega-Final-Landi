@@ -2,8 +2,8 @@ from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
-from ropa.models import Pedido, Prenda
-from ropa.forms import Pedido_form, Prenda_form
+from ropa.models import Pedido, Prenda, Accesorio
+from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
 
 # Create your views here.
 
@@ -63,3 +63,22 @@ def crear_prenda(request):
         #else:
         #    context = {'errors': form.errors}
         return render(request, 'crear_prenda.html', context=context)
+
+def cargar_accesorio(request):
+    if request.method == 'GET':
+        form = Accesorio_form()
+        context = {'form':form}
+        return render(request, 'cargar_accesorio.html', context=context)
+    else:
+        form = Accesorio_form(request.POST)
+        if form.is_valid():
+            nuevo_accesorio = Accesorio.objects.create(
+                tipo = form.cleaned_data['tipo'],
+                talle_accesorio = form.cleaned_data['talle_accesorio'],
+                color_accesorio = form.cleaned_data['color_accesorio'],
+                para_regalo = form.cleaned_data['para_regalo'],
+            )
+            context = {'nuevo_accesorio': nuevo_accesorio}
+        #else:
+        #    context = {'errors': form.errors}
+        return render(request, 'cargar_accesorio.html', context=context)

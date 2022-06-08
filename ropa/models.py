@@ -20,3 +20,13 @@ class Prenda(models.Model):
     class Meta:
         verbose_name = 'Prenda'
         verbose_name_plural = 'Prendas'
+
+class Accesorio(models.Model):
+    tipo = models.CharField(max_length=50)
+    talle_accesorio = models.IntegerField()
+    color_accesorio = models.CharField(max_length=70)
+    para_regalo = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'Accesorio'
+        verbose_name_plural = 'Accesorios'
