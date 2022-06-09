@@ -19,17 +19,6 @@
             </div>
         {% endfor %}
 
-        {% for prenda in prendas %}
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{prenda.nombre}}</h5>
-                    <p class="card-text">{{prenda.talle}}</p>
-                    <p class="card-text">{{prenda.color}}</p>
-                    <a href="#" class="btn btn-primary">Comprar</a>
-                </div>
-            </div>
-        {% endfor %}
-
     </div>
 
     {{errors}}
