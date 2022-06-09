@@ -1,18 +1,19 @@
 {% extends 'padre.html' %}
 
 {% block titulo %}
-    Pedidos
+    Accesorios
 {% endblock %}
 
 {% block contenido %}
 
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
-        {% for pedido in lista_pedidos %}
+        {% for accesorio in lista_accesorios %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{pedido.prenda}}</h5>
-                    <p class="card-text">{{pedido.fecha_pedido}}</p>
-                    <p class="card-text">{{pedido.precio}}</p>
+                    <h5 class="card-title">{{accesorio.tipo}}</h5>
+                    <p class="card-text">{{accesorio.talle_accesorio}}</p>
+                    <p class="card-text">{{accesorio.color_accesorio}}</p>
+                    <p class="card-text">{{accesorio.para_regalo}}</p>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>

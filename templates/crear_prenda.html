@@ -6,9 +6,8 @@
 
 {% block contenido %}
 
-    Prenda creada a medida:
     {% if form %}
-        <h2 style="margin-left:25rem;">Complete los datos del nuevo pedido:</h2>
+        <h2 style="margin-left:25rem;">Complete los datos para crear una prenda a medida:</h2>
         <form method="POST" action="" style="margin-left:35rem;margin-top:7rem">
             {% csrf_token %}
             <table>

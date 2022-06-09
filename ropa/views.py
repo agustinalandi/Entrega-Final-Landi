@@ -7,16 +7,21 @@ from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
 
 # Create your views here.
 
-def listar_pedidos(request):
-    lista_pedidos = Pedido.objects.all()
-    context = {'lista_pedidos':lista_pedidos}
-    return render(request, 'lista_pedidos.html', context=context)
-
 def index(request):
     return render(request, 'index.html')
 
 def contacto(request):
     return render(request, 'contacto.html')
+
+def listar_pedidos(request):
+    lista_pedidos = Pedido.objects.all()
+    context = {'lista_pedidos':lista_pedidos}
+    return render(request, 'lista_pedidos.html', context=context)
+
+def listar_accesorios(request):
+    lista_accesorios = Accesorio.objects.all()
+    context = {'lista_accesorios':lista_accesorios}
+    return render(request, 'lista_accesorios.html', context=context)
 
 def crear_pedido(request):
     if request.method == 'GET':
@@ -64,16 +69,6 @@ def crear_prenda(request):
         #    context = {'errors': form.errors}
         return render(request, 'crear_prenda.html', context=context)
 
-def buscar_prenda(request):
-    #pedido = Pedido.objects.get()
-    palabra_buscada = request.GET['search']
-    prendas = Prenda.objects.filter(nombre__icontains = palabra_buscada)
-    if prendas.exists():
-        context = {'prendas': prendas}
-    else: 
-        context = {'errors': f'Disculpe, no se encuentra la prenda {palabra_buscada} solicitada.'}
-    return render(request, 'buscador.html', context = context)
-
 def cargar_accesorio(request):
     if request.method == 'GET':
         form = Accesorio_form()
@@ -93,12 +88,3 @@ def cargar_accesorio(request):
         #    context = {'errors': form.errors}
         return render(request, 'cargar_accesorio.html', context=context)
 
-def buscar_accesorio(request):
-    #pedido = Pedido.objects.get()
-    palabra_buscada = request.GET['search']
-    accesorios = Accesorio.objects.filter(tipo__icontains = palabra_buscada)
-    if accesorios.exists():
-        context = {'accesorios': accesorios}
-    else: 
-        context = {'errors': f'Disculpe, no se encuentra el accesorio {palabra_buscada} solicitado.'}
-    return render(request, 'buscador.html', context = context)
