@@ -13,6 +13,11 @@ def index(request):
 def contacto(request):
     return render(request, 'contacto.html')
 
+def listar_prendas(request):
+    lista_prendas = Prenda.objects.all()
+    context = {'lista_prendas':lista_prendas}
+    return render(request, 'lista_prendas.html', context=context)
+
 def listar_pedidos(request):
     lista_pedidos = Pedido.objects.all()
     context = {'lista_pedidos':lista_pedidos}
