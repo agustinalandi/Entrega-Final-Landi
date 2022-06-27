@@ -1,24 +1,21 @@
 {% extends 'padre.html' %}
 
 {% block titulo %}
-    Prendas
+    Detalle de Prendas
 {% endblock %}
 
 {% block contenido %}
 
-{{message}}
-
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
-        {% for prenda in lista_prendas %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{prenda.nombre}}</h5>
                     <p class="card-text">{{prenda.talle}}</p>
                     <p class="card-text">{{prenda.color}}</p>
-                    <a href="/ropa/detalle_prenda/{{prenda.id}}/" class="btn btn-primary">Ver mas</a>
+                    <a href="#" class="btn btn-primary">Editar</a>
+                    <a href="/ropa/eliminar_prenda/{{prenda.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
-        {% endfor %}
     </div>
 
 {% endblock %}

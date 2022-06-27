@@ -18,6 +18,31 @@ def listar_prendas(request):
     context = {'lista_prendas':lista_prendas}
     return render(request, 'lista_prendas.html', context=context)
 
+def detallar_prenda(request, pk):
+    try:
+        prenda = Prenda.objects.get(pk=pk)
+        context = {'prenda':prenda}
+        return render(request, 'detalle_prenda.html', context=context)
+    except:
+        context = {'error':'La prenda no existe'}
+        return render(request, 'lista_prendas.html', context=context)
+
+def eliminar_prenda(request, pk):
+    try:
+        if request.method == 'GET':
+            prenda = Prenda.objects.get(id=pk)
+            context = {'prenda':prenda}      
+        else:
+            prenda = Prenda.objects.get(id=pk)
+            prenda.delete()
+            context = {'message':'La prenda fue eliminada correctamente.'}
+        return render(request, 'eliminar_prenda.html', context=context)
+    
+    except:
+        context = {'error':'La prenda no existe'}
+        return render(request, 'eliminar_prenda.html', context=context)
+
+
 def listar_pedidos(request):
     lista_pedidos = Pedido.objects.all()
     context = {'lista_pedidos':lista_pedidos}
