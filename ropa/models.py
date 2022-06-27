@@ -7,6 +7,7 @@ class Pedido(models.Model):
     prenda = models.CharField(max_length=100)
     precio = models.FloatField()
     fecha_pedido = models.DateField(default=now)
+    es_temporada_actual = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Pedido'

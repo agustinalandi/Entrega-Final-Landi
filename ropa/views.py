@@ -40,6 +40,7 @@ def crear_pedido(request):
                 prenda = form.cleaned_data['prenda'],
                 precio = form.cleaned_data['precio'],
                 fecha_pedido = form.cleaned_data['fecha_pedido'],
+                es_temporada_actual = form.cleaned_data['es_temporada_actual'],
             )
             context = {'nuevo_pedido': nuevo_pedido}
         #else:
