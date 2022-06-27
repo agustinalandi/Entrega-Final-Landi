@@ -87,7 +87,7 @@ def cargar_accesorio(request):
                 tipo = form.cleaned_data['tipo'],
                 talle_accesorio = form.cleaned_data['talle_accesorio'],
                 color_accesorio = form.cleaned_data['color_accesorio'],
-                para_regalo = form.cleaned_data['para_regalo'],
+                es_para_regalo = form.cleaned_data['es_para_regalo'],
             )
             context = {'nuevo_accesorio': nuevo_accesorio}
         #else:

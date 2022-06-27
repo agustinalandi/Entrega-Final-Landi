@@ -26,7 +26,7 @@ class Accesorio(models.Model):
     tipo = models.CharField(max_length=50)
     talle_accesorio = models.IntegerField()
     color_accesorio = models.CharField(max_length=70)
-    para_regalo = models.BooleanField(default=True)
+    es_para_regalo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Accesorio'
