@@ -5,26 +5,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from ropa.models import Pedido, Prenda, Accesorio
 from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.urls import reverse
 
 # Create your views here.
-
-def index(request):
-    return render(request, 'index.html')
-
-def contacto(request):
-    return render(request, 'contacto.html')
 
 #def listar_prendas(request):
 #    lista_prendas = Prenda.objects.all()
 #    context = {'lista_prendas':lista_prendas}
 #    return render(request, 'lista_prendas.html', context=context)
 
-class Listar_prendas(ListView):
-    model = Prenda
-    template_name = 'lista_prendas.html'
-    
 #def crear_prenda(request):
 #    if request.method == 'GET':
 #        form = Prenda_form()
@@ -43,15 +33,6 @@ class Listar_prendas(ListView):
 #           #context = {'errors': form.errors}
 #       return render(request, 'crear_prenda.html', context=context)
 
-
-class Crear_prenda(CreateView):
-    model = Prenda
-    template_name = 'crear_prenda.html'
-    fields = '__all__'
-    
-    def get_success_url(self):
-        return reverse('detalle_prenda', kwargs={'pk':self.object.pk})
-
 #def detallar_prenda(request, pk):
 #    try:
 #        prenda = Prenda.objects.get(pk=pk)
@@ -61,33 +42,10 @@ class Crear_prenda(CreateView):
 #        context = {'error':'La prenda no existe'}
 #        return render(request, 'lista_prendas.html', context=context)
 
-class Detallar_prenda(DetailView):
-    model = Prenda
-    template_name = 'detalle_prenda.html'
-
-def eliminar_prenda(request, pk):
-    try:
-        if request.method == 'GET':
-            prenda = Prenda.objects.get(id=pk)
-            context = {'prenda':prenda}      
-        else:
-            prenda = Prenda.objects.get(id=pk)
-            prenda.delete()
-            context = {'message':'La prenda fue eliminada correctamente.'}
-        return render(request, 'eliminar_prenda.html', context=context)
-    
-    except:
-        context = {'error':'La prenda no existe'}
-        return render(request, 'eliminar_prenda.html', context=context)
-
 #def listar_pedidos(request):
 #    lista_pedidos = Pedido.objects.all()
 #    context = {'lista_pedidos':lista_pedidos}
 #    return render(request, 'lista_pedidos.html', context=context)
-
-class Listar_pedidos(ListView):
-    model = Pedido
-    template_name = 'lista_pedidos.html'
 
 #def crear_pedido(request):
 #    if request.method == 'GET':
@@ -107,6 +65,117 @@ class Listar_pedidos(ListView):
 #        #else:
 #        #    context = {'errors': form.errors}
 #        return render(request, 'crear_pedido.html', context=context)
+
+#def listar_accesorios(request):
+#    lista_accesorios = Accesorio.objects.all()
+#    context = {'lista_accesorios':lista_accesorios}
+#    return render(request, 'lista_accesorios.html', context=context)
+
+#def cargar_accesorio(request):
+#    if request.method == 'GET':
+#        form = Accesorio_form()
+#        context = {'form':form}
+#        return render(request, 'cargar_accesorio.html', context=context)
+#    else:
+#        form = Accesorio_form(request.POST)
+#        if form.is_valid():
+#            nuevo_accesorio = Accesorio.objects.create(
+#                tipo = form.cleaned_data['tipo'],
+#                talle_accesorio = form.cleaned_data['talle_accesorio'],
+#                color_accesorio = form.cleaned_data['color_accesorio'],
+#                es_para_regalo = form.cleaned_data['es_para_regalo'],
+#            )
+#            context = {'nuevo_accesorio': nuevo_accesorio}
+#        #else:
+#        #    context = {'errors': form.errors}
+#        return render(request, 'cargar_accesorio.html', context=context)
+
+#def detallar_accesorio(request, pk):
+#    try:
+#        accesorio = Accesorio.objects.get(pk=pk)
+#        context = {'accesorio':accesorio}
+#        return render(request, 'detalle_accesorio.html', context=context)
+#    except:
+#        context = {'error':'El accesorio no existe'}
+#        return render(request, 'lista_accesorios.html', context=context)
+
+#def eliminar_prenda(request, pk):
+#    try:
+#        if request.method == 'GET':
+#            prenda = Prenda.objects.get(id=pk)
+#            context = {'prenda':prenda}      
+#        else:
+#            prenda = Prenda.objects.get(id=pk)
+#            prenda.delete()
+#            context = {'message':'La prenda fue eliminada correctamente.'}
+#        return render(request, 'eliminar_prenda.html', context=context)
+#    
+#    except:
+#        context = {'error':'La prenda no existe'}
+#        return render(request, 'eliminar_prenda.html', context=context)
+
+#def eliminar_pedido(request, pk):
+#    try:
+#        if request.method == 'GET':
+#            pedido = Pedido.objects.get(id=pk)
+#            context = {'pedido':pedido}      
+#        else:
+#            pedido = Pedido.objects.get(id=pk)
+#            pedido.delete()
+#            context = {'message':'El pedido fue eliminado correctamente.'}
+#        return render(request, 'eliminar_pedido.html', context=context)
+#    
+#    except:
+#        context = {'error':'El pedido no existe'}
+#        return render(request, 'eliminar_pedido.html', context=context)
+
+# #def eliminar_accesorio(request, pk):
+#    try:
+#        if request.method == 'GET':
+#            accesorio = Accesorio.objects.get(id=pk)
+#            context = {'accesorio':accesorio}      
+#        else:
+#            accesorio = Accesorio.objects.get(id=pk)
+#            accesorio.delete()
+#            context = {'message':'El accesorio fue eliminado correctamente.'}
+#        return render(request, 'eliminar_accesorio.html', context=context)
+#    
+#    except:
+#        context = {'error':'El accesorio no existe'}
+#        return render(request, 'eliminar_accesorio.html', context=context)
+
+def index(request):
+    return render(request, 'index.html')
+
+def contacto(request):
+    return render(request, 'contacto.html')
+
+class Listar_prendas(ListView):
+    model = Prenda
+    template_name = 'lista_prendas.html'
+    
+class Crear_prenda(CreateView):
+    model = Prenda
+    template_name = 'crear_prenda.html'
+    fields = '__all__'
+    
+    def get_success_url(self):
+        return reverse('detalle_prenda', kwargs={'pk':self.object.pk})
+
+class Detallar_prenda(DetailView):
+    model = Prenda
+    template_name = 'detalle_prenda.html'
+
+class Eliminar_prenda(DeleteView):
+    model = Prenda
+    template_name = 'eliminar_prenda.html'
+
+    def get_success_url(self):
+        return reverse('listar_prendas')
+
+class Listar_pedidos(ListView):
+    model = Pedido
+    template_name = 'lista_pedidos.html'
 
 class Crear_pedido(CreateView):
     model = Pedido
@@ -139,48 +208,16 @@ class Detallar_pedido(DetailView):
     model = Pedido
     template_name = 'detalle_pedido.html'
 
-def eliminar_pedido(request, pk):
-    try:
-        if request.method == 'GET':
-            pedido = Pedido.objects.get(id=pk)
-            context = {'pedido':pedido}      
-        else:
-            pedido = Pedido.objects.get(id=pk)
-            pedido.delete()
-            context = {'message':'El pedido fue eliminado correctamente.'}
-        return render(request, 'eliminar_pedido.html', context=context)
-    
-    except:
-        context = {'error':'El pedido no existe'}
-        return render(request, 'eliminar_pedido.html', context=context)
+class Eliminar_pedido(DeleteView):
+    model = Pedido
+    template_name = 'eliminar_pedido.html'
 
-#def listar_accesorios(request):
-#    lista_accesorios = Accesorio.objects.all()
-#    context = {'lista_accesorios':lista_accesorios}
-#    return render(request, 'lista_accesorios.html', context=context)
+    def get_success_url(self):
+        return reverse('lista_pedidos')
 
 class Listar_accesorios(ListView):
     model = Accesorio
     template_name = 'lista_accesorios.html'
-
-#def cargar_accesorio(request):
-#    if request.method == 'GET':
-#        form = Accesorio_form()
-#        context = {'form':form}
-#        return render(request, 'cargar_accesorio.html', context=context)
-#    else:
-#        form = Accesorio_form(request.POST)
-#        if form.is_valid():
-#            nuevo_accesorio = Accesorio.objects.create(
-#                tipo = form.cleaned_data['tipo'],
-#                talle_accesorio = form.cleaned_data['talle_accesorio'],
-#                color_accesorio = form.cleaned_data['color_accesorio'],
-#                es_para_regalo = form.cleaned_data['es_para_regalo'],
-#            )
-#            context = {'nuevo_accesorio': nuevo_accesorio}
-#        #else:
-#        #    context = {'errors': form.errors}
-#        return render(request, 'cargar_accesorio.html', context=context)
 
 class Crear_accesorio(CreateView):
     model = Accesorio
@@ -190,30 +227,13 @@ class Crear_accesorio(CreateView):
     def get_success_url(self):
         return reverse('detalle_accesorio', kwargs={'pk':self.object.pk})
 
-#def detallar_accesorio(request, pk):
-#    try:
-#        accesorio = Accesorio.objects.get(pk=pk)
-#        context = {'accesorio':accesorio}
-#        return render(request, 'detalle_accesorio.html', context=context)
-#    except:
-#        context = {'error':'El accesorio no existe'}
-#        return render(request, 'lista_accesorios.html', context=context)
-
 class Detallar_accesorio(DetailView):
     model = Accesorio
     template_name = 'detalle_accesorio.html'
 
-def eliminar_accesorio(request, pk):
-    try:
-        if request.method == 'GET':
-            accesorio = Accesorio.objects.get(id=pk)
-            context = {'accesorio':accesorio}      
-        else:
-            accesorio = Accesorio.objects.get(id=pk)
-            accesorio.delete()
-            context = {'message':'El accesorio fue eliminado correctamente.'}
-        return render(request, 'eliminar_accesorio.html', context=context)
-    
-    except:
-        context = {'error':'El accesorio no existe'}
-        return render(request, 'eliminar_accesorio.html', context=context)
+class Eliminar_accesorio(DeleteView):
+    model = Accesorio
+    template_name = 'eliminar_accesorio.html'
+
+    def get_success_url(self):
+        return reverse('listar_accesorios')

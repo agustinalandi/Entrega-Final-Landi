@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ropa.views import Crear_accesorio, contacto, index, Listar_accesorios, Detallar_accesorio, eliminar_accesorio
+from ropa.views import Crear_accesorio, contacto, index, Listar_accesorios, Detallar_accesorio, Eliminar_accesorio
 
 urlpatterns = [
     path('', index, name = 'index'),
@@ -25,6 +25,6 @@ urlpatterns = [
     path('listar_accesorios/', Listar_accesorios.as_view(), name = 'listar_accesorios'),
     path('crear_accesorio/', Crear_accesorio.as_view(), name = 'crear_accesorio'),
     path('detalle_accesorio/<int:pk>/', Detallar_accesorio.as_view(), name = 'detalle_accesorio'),
-    path('eliminar_accesorio/<int:pk>/', eliminar_accesorio, name = 'eliminar_accesorio'),
+    path('eliminar_accesorio/<int:pk>/', Eliminar_accesorio.as_view(), name = 'eliminar_accesorio'),
 ]
 
