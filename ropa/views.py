@@ -1,10 +1,13 @@
+from audioop import reverse
 from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from ropa.models import Pedido, Prenda, Accesorio
 from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse
+
 # Create your views here.
 
 def index(request):
@@ -22,23 +25,32 @@ class Listar_prendas(ListView):
     model = Prenda
     template_name = 'lista_prendas.html'
     
-def crear_prenda(request):
-    if request.method == 'GET':
-        form = Prenda_form()
-        context = {'form':form}
-        return render(request, 'crear_prenda.html', context=context)
-    else:
-        form = Prenda_form(request.POST)
-        if form.is_valid():
-            nueva_prenda = Prenda.objects.create(
-                nombre = form.cleaned_data['nombre'],
-                talle = form.cleaned_data['talle'],
-                color = form.cleaned_data['color'],
-            )
-            context = {'nueva_prenda': nueva_prenda}
-        #else:
-        #    context = {'errors': form.errors}
-        return render(request, 'crear_prenda.html', context=context)
+#def crear_prenda(request):
+#    if request.method == 'GET':
+#        form = Prenda_form()
+#        context = {'form':form}
+#        return render(request, 'crear_prenda.html', context=context)
+#    else:
+#        form = Prenda_form(request.POST)
+#        if form.is_valid():
+#            nueva_prenda = Prenda.objects.create(
+#               nombre = form.cleaned_data['nombre'],
+#               talle = form.cleaned_data['talle'],
+#               color = form.cleaned_data['color'],
+#            )
+#            context = {'nueva_prenda': nueva_prenda}
+#        #else:
+#           #context = {'errors': form.errors}
+#       return render(request, 'crear_prenda.html', context=context)
+
+
+class Crear_prenda(CreateView):
+    model = Prenda
+    template_name = 'crear_prenda.html'
+    fields = '__all__'
+    
+    def get_success_url(self):
+        return reverse('detalle_prenda', kwargs={'pk':self.object.pk})
 
 #def detallar_prenda(request, pk):
 #    try:
@@ -77,24 +89,32 @@ class Listar_pedidos(ListView):
     model = Pedido
     template_name = 'lista_pedidos.html'
 
-def crear_pedido(request):
-    if request.method == 'GET':
-        form = Pedido_form()
-        context = {'form':form}
-        return render(request, 'crear_pedido.html', context=context)
-    else:
-        form = Pedido_form(request.POST)
-        if form.is_valid():
-            nuevo_pedido = Pedido.objects.create(
-                prenda = form.cleaned_data['prenda'],
-                precio = form.cleaned_data['precio'],
-                fecha_pedido = form.cleaned_data['fecha_pedido'],
-                es_temporada_actual = form.cleaned_data['es_temporada_actual'],
-            )
-            context = {'nuevo_pedido': nuevo_pedido}
-        #else:
-        #    context = {'errors': form.errors}
-        return render(request, 'crear_pedido.html', context=context)
+#def crear_pedido(request):
+#    if request.method == 'GET':
+#        form = Pedido_form()
+#        context = {'form':form}
+#        return render(request, 'crear_pedido.html', context=context)
+#    else:
+#        form = Pedido_form(request.POST)
+#        if form.is_valid():
+#            nuevo_pedido = Pedido.objects.create(
+#                prenda = form.cleaned_data['prenda'],
+#                precio = form.cleaned_data['precio'],
+#                fecha_pedido = form.cleaned_data['fecha_pedido'],
+#                es_temporada_actual = form.cleaned_data['es_temporada_actual'],
+#            )
+#            context = {'nuevo_pedido': nuevo_pedido}
+#        #else:
+#        #    context = {'errors': form.errors}
+#        return render(request, 'crear_pedido.html', context=context)
+
+class Crear_pedido(CreateView):
+    model = Pedido
+    template_name = 'crear_pedido.html'
+    fields = '__all__'
+    
+    def get_success_url(self):
+        return reverse('detalle_pedido', kwargs={'pk':self.object.pk})
 
 def buscar_pedido(request):
     #pedido = Pedido.objects.get()
@@ -143,24 +163,32 @@ class Listar_accesorios(ListView):
     model = Accesorio
     template_name = 'lista_accesorios.html'
 
-def cargar_accesorio(request):
-    if request.method == 'GET':
-        form = Accesorio_form()
-        context = {'form':form}
-        return render(request, 'cargar_accesorio.html', context=context)
-    else:
-        form = Accesorio_form(request.POST)
-        if form.is_valid():
-            nuevo_accesorio = Accesorio.objects.create(
-                tipo = form.cleaned_data['tipo'],
-                talle_accesorio = form.cleaned_data['talle_accesorio'],
-                color_accesorio = form.cleaned_data['color_accesorio'],
-                es_para_regalo = form.cleaned_data['es_para_regalo'],
-            )
-            context = {'nuevo_accesorio': nuevo_accesorio}
-        #else:
-        #    context = {'errors': form.errors}
-        return render(request, 'cargar_accesorio.html', context=context)
+#def cargar_accesorio(request):
+#    if request.method == 'GET':
+#        form = Accesorio_form()
+#        context = {'form':form}
+#        return render(request, 'cargar_accesorio.html', context=context)
+#    else:
+#        form = Accesorio_form(request.POST)
+#        if form.is_valid():
+#            nuevo_accesorio = Accesorio.objects.create(
+#                tipo = form.cleaned_data['tipo'],
+#                talle_accesorio = form.cleaned_data['talle_accesorio'],
+#                color_accesorio = form.cleaned_data['color_accesorio'],
+#                es_para_regalo = form.cleaned_data['es_para_regalo'],
+#            )
+#            context = {'nuevo_accesorio': nuevo_accesorio}
+#        #else:
+#        #    context = {'errors': form.errors}
+#        return render(request, 'cargar_accesorio.html', context=context)
+
+class Crear_accesorio(CreateView):
+    model = Accesorio
+    template_name = 'crear_accesorio.html'
+    fields = '__all__'
+    
+    def get_success_url(self):
+        return reverse('detalle_accesorio', kwargs={'pk':self.object.pk})
 
 #def detallar_accesorio(request, pk):
 #    try:
