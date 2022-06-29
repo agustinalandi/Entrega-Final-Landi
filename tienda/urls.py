@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ropa.views import cargar_accesorio, contacto, index, listar_accesorios
+from ropa.views import cargar_accesorio, contacto, index, Listar_accesorios, detallar_accesorio, eliminar_accesorio
 
 urlpatterns = [
     path('', index, name = 'index'),
     path('admin/', admin.site.urls),
     path('ropa/', include('ropa.urls')),
     path('contacto/', contacto, name = 'contacto'),
-    path('listar_accesorios/', listar_accesorios, name = 'listar_accesorios'),
-    path('cargar_accesorio/', cargar_accesorio, name = 'cargar_accesorio')
+    path('listar_accesorios/', Listar_accesorios.as_view(), name = 'listar_accesorios'),
+    path('cargar_accesorio/', cargar_accesorio, name = 'cargar_accesorio'),
+    path('detalle_accesorio/<int:pk>/', detallar_accesorio, name = 'detalle_accesorio'),
+    path('eliminar_accesorio/<int:pk>/', eliminar_accesorio, name = 'eliminar_accesorio'),
 ]

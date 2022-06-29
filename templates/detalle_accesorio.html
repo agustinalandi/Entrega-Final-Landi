@@ -1,24 +1,24 @@
 {% extends 'padre.html' %}
 
 {% block titulo %}
-    Accesorios
+    Detalle del Accesorio
 {% endblock %}
 
 {% block contenido %}
 
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
-        {% for accesorio in object_list %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{accesorio.tipo}}</h5>
                     <p class="card-text">{{accesorio.talle_accesorio}}</p>
                     <p class="card-text">{{accesorio.color_accesorio}}</p>
-                    <p class="card-text">    
-                        Para regalo: {{accesorio.es_para_regalo}}</p>
-                    <a href="/detalle_accesorio/{{accesorio.id}}/" class="btn btn-primary">Ver mas</a>
+                    <p class="card-text">
+                        El accesorio es de la temporada actual: {{accesorio.es_para_regalo}}
+                    </p>
+                    <a href="#" class="btn btn-primary">Editar</a>
+                    <a href="/eliminar_accesorio/{{accesorio.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
-        {% endfor %}
     </div>
 
 {% endblock %}
