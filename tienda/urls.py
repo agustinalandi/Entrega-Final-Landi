@@ -20,8 +20,11 @@ from ropa.views import index, contacto, Crear_accesorio, Listar_accesorios, Deta
 urlpatterns = [
     path('', index, name = 'index'),
     path('admin/', admin.site.urls),
-    path('ropa/', include('ropa.urls')),
     path('contacto/', contacto, name = 'contacto'),
+    
+    path('ropa/', include('ropa.urls')),
+    path('accounts/', include('accounts.urls')),
+    
     path('crear_accesorio/', Crear_accesorio.as_view(), name = 'crear_accesorio'),
     path('listar_accesorios/', Listar_accesorios.as_view(), name = 'listar_accesorios'),
     path('detalle_accesorio/<int:pk>/', Detallar_accesorio.as_view(), name = 'detalle_accesorio'),
