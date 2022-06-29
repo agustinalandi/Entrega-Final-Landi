@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from ropa.models import Pedido, Prenda, Accesorio
 from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 def index(request):
@@ -40,14 +40,18 @@ def crear_prenda(request):
         #    context = {'errors': form.errors}
         return render(request, 'crear_prenda.html', context=context)
 
-def detallar_prenda(request, pk):
-    try:
-        prenda = Prenda.objects.get(pk=pk)
-        context = {'prenda':prenda}
-        return render(request, 'detalle_prenda.html', context=context)
-    except:
-        context = {'error':'La prenda no existe'}
-        return render(request, 'lista_prendas.html', context=context)
+#def detallar_prenda(request, pk):
+#    try:
+#        prenda = Prenda.objects.get(pk=pk)
+#        context = {'prenda':prenda}
+#        return render(request, 'detalle_prenda.html', context=context)
+#    except:
+#        context = {'error':'La prenda no existe'}
+#        return render(request, 'lista_prendas.html', context=context)
+
+class Detallar_prenda(DetailView):
+    model = Prenda
+    template_name = 'detalle_prenda.html'
 
 def eliminar_prenda(request, pk):
     try:
@@ -102,7 +106,7 @@ def buscar_pedido(request):
         context = {'errors': f'Disculpe, no se encuentra el pedido {palabra_buscada} solicitado.'}
     return render(request, 'buscador.html', context = context)
 
-def detallar_pedido(request, pk):
+#def detallar_pedido(request, pk):
     try:
         pedido = Pedido.objects.get(pk=pk)
         context = {'pedido':pedido}
@@ -110,6 +114,10 @@ def detallar_pedido(request, pk):
     except:
         context = {'error':'El pedido no existe'}
         return render(request, 'lista_pedidos.html', context=context)
+
+class Detallar_pedido(DetailView):
+    model = Pedido
+    template_name = 'detalle_pedido.html'
 
 def eliminar_pedido(request, pk):
     try:
@@ -154,14 +162,18 @@ def cargar_accesorio(request):
         #    context = {'errors': form.errors}
         return render(request, 'cargar_accesorio.html', context=context)
 
-def detallar_accesorio(request, pk):
-    try:
-        accesorio = Accesorio.objects.get(pk=pk)
-        context = {'accesorio':accesorio}
-        return render(request, 'detalle_accesorio.html', context=context)
-    except:
-        context = {'error':'El accesorio no existe'}
-        return render(request, 'lista_accesorios.html', context=context)
+#def detallar_accesorio(request, pk):
+#    try:
+#        accesorio = Accesorio.objects.get(pk=pk)
+#        context = {'accesorio':accesorio}
+#        return render(request, 'detalle_accesorio.html', context=context)
+#    except:
+#        context = {'error':'El accesorio no existe'}
+#        return render(request, 'lista_accesorios.html', context=context)
+
+class Detallar_accesorio(DetailView):
+    model = Accesorio
+    template_name = 'detalle_accesorio.html'
 
 def eliminar_accesorio(request, pk):
     try:

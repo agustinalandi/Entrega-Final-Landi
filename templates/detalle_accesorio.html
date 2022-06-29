@@ -9,14 +9,14 @@
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{accesorio.tipo}}</h5>
-                    <p class="card-text">{{accesorio.talle_accesorio}}</p>
-                    <p class="card-text">{{accesorio.color_accesorio}}</p>
+                    <h5 class="card-title">{{object.tipo}}</h5>
+                    <p class="card-text">{{object.talle_accesorio}}</p>
+                    <p class="card-text">{{object.color_accesorio}}</p>
                     <p class="card-text">
-                        El accesorio es de la temporada actual: {{accesorio.es_para_regalo}}
+                        El accesorio es de la temporada actual: {{object.es_para_regalo}}
                     </p>
                     <a href="#" class="btn btn-primary">Editar</a>
-                    <a href="/eliminar_accesorio/{{accesorio.id}}/" class="btn btn-danger">Eliminar</a>
+                    <a href="/eliminar_accesorio/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
     </div>
