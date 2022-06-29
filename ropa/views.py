@@ -62,7 +62,7 @@ class Crear_pedido(CreateView):
 class Actualizar_pedido(UpdateView):
     model = Pedido
     template_name = 'actualizar_pedido.html'
-    fields = '__all__'
+    fields = ['prenda', 'precio', 'es_temporada_actual']
 
     def get_success_url(self):
         return reverse('detalle_pedido', kwargs= {'pk':self.object.pk})
