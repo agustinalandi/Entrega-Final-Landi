@@ -6,10 +6,10 @@
 
 {% block contenido %}
 
-<h2 style="margin-left:25rem;">Complete los campos para iniciar sesion:</h2>
+<h2 style="margin-left:23rem;">Complete los campos para iniciar sesion:</h2>
     <h3>{{errors}}</h3>
 
-    <form method="POST" action="" style="margin-left:35rem;margin-top:7rem">
+    <form method="POST" action="" style="margin-left:32rem;margin-top:3rem">
         {% csrf_token %}
         <table>
             {{form.as_table}}

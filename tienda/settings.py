@@ -41,6 +41,7 @@ BASE_APPS = [
 
 MY_APPS = [
     'ropa',
+    'accounts',
 ]
 
 THIRD_APPS = [
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'UTC'
 

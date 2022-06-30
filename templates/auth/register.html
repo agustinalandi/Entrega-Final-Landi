@@ -1,0 +1,21 @@
+{% extends 'padre.html' %}
+
+{% block titulo %}
+    Registro
+{% endblock %}
+
+{% block contenido %}
+
+<h2 style="margin-left:24rem;">Complete los campos para registrarse:</h2>
+    <h3>{{errors}}</h3>
+
+    <form method="POST" action="" style="margin-left:8rem;margin-top:3rem">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        
+    </form>
+
+{% endblock %}
