@@ -1,6 +1,6 @@
 # Entrega1Landi
 
-Mi proyecto se llama Tienda, y su aplicacion Ropa.
+Mi proyecto se llama Tienda. Tiene 3 aplicaciones: Ropa, Accesorios y Accounts.
 
 Tiene un requirements.txt donde aclaro que librerias estoy usando y un .gitignore.
 
