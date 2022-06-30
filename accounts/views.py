@@ -1,9 +1,14 @@
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
+from django.urls import reverse
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import UpdateView
 
-from accounts.forms import User_registration_form
+from accounts.forms import User_registration_form, User_edit_form
+
 
 # Create your views here.
 
@@ -66,3 +71,24 @@ def register_view(request):
         form = User_registration_form
         context = {'form':form}
         return render(request, 'auth/register.html', context=context)
+
+def user_edit(request):
+
+    user = request.user
+
+    if request.method == 'POST':
+        form = User_edit_form(request.POST)
+
+        if form.is_valid():
+            user.email = form.cleaned_data['email']
+            user.password1 = form.cleaned_data['password1']
+            user.password2 = form.cleaned_data['password2']
+            user.save()
+            context = {'message':'Usuario editado con exito.'}
+            return render(request, 'index.html', context=context)
+    else:
+        form = User_edit_form(initial={'email':user.email})
+    
+    return render(request, 'auth/edit_user.html', {'form':form, 'user':user})
+
+
