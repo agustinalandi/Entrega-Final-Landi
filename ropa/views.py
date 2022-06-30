@@ -1,12 +1,14 @@
-from audioop import reverse
 from multiprocessing import context
+
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
-from ropa.models import Pedido, Prenda, Accesorio
-from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from ropa.models import Pedido, Prenda, Accesorio
+from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
+
 
 # Create your views here.
 
@@ -22,7 +24,7 @@ class Listar_prendas(ListView):
     model = Prenda
     template_name = 'lista_prendas.html'
     
-class Crear_prenda(CreateView):
+class Crear_prenda(LoginRequiredMixin, CreateView):
     model = Prenda
     template_name = 'crear_prenda.html'
     fields = '__all__'
@@ -30,7 +32,7 @@ class Crear_prenda(CreateView):
     def get_success_url(self):
         return reverse('detalle_prenda', kwargs={'pk':self.object.pk})
 
-class Actualizar_prenda(UpdateView):
+class Actualizar_prenda(LoginRequiredMixin, UpdateView):
     model = Prenda
     template_name = 'actualizar_prenda.html'
     fields = '__all__'
@@ -42,7 +44,7 @@ class Detallar_prenda(DetailView):
     model = Prenda
     template_name = 'detalle_prenda.html'
 
-class Eliminar_prenda(DeleteView):
+class Eliminar_prenda(LoginRequiredMixin, DeleteView):
     model = Prenda
     template_name = 'eliminar_prenda.html'
 
@@ -53,7 +55,7 @@ class Listar_pedidos(ListView):
     model = Pedido
     template_name = 'lista_pedidos.html'
 
-class Crear_pedido(CreateView):
+class Crear_pedido(LoginRequiredMixin, CreateView):
     model = Pedido
     template_name = 'crear_pedido.html'
     fields = '__all__'
@@ -61,7 +63,7 @@ class Crear_pedido(CreateView):
     def get_success_url(self):
         return reverse('detalle_pedido', kwargs={'pk':self.object.pk})
 
-class Actualizar_pedido(UpdateView):
+class Actualizar_pedido(LoginRequiredMixin, UpdateView):
     model = Pedido
     template_name = 'actualizar_pedido.html'
     fields = ['prenda', 'precio', 'es_temporada_actual']
@@ -92,7 +94,7 @@ class Detallar_pedido(DetailView):
     model = Pedido
     template_name = 'detalle_pedido.html'
 
-class Eliminar_pedido(DeleteView):
+class Eliminar_pedido(LoginRequiredMixin, DeleteView):
     model = Pedido
     template_name = 'eliminar_pedido.html'
 
@@ -103,7 +105,7 @@ class Listar_accesorios(ListView):
     model = Accesorio
     template_name = 'lista_accesorios.html'
 
-class Crear_accesorio(CreateView):
+class Crear_accesorio(LoginRequiredMixin, CreateView):
     model = Accesorio
     template_name = 'crear_accesorio.html'
     fields = '__all__'
@@ -111,7 +113,7 @@ class Crear_accesorio(CreateView):
     def get_success_url(self):
         return reverse('detalle_accesorio', kwargs={'pk':self.object.pk})
 
-class Actualizar_accesorio(UpdateView):
+class Actualizar_accesorio(LoginRequiredMixin, UpdateView):
     model = Accesorio
     template_name = 'actualizar_accesorio.html'
     fields = '__all__'
@@ -123,7 +125,7 @@ class Detallar_accesorio(DetailView):
     model = Accesorio
     template_name = 'detalle_accesorio.html'
 
-class Eliminar_accesorio(DeleteView):
+class Eliminar_accesorio(LoginRequiredMixin, DeleteView):
     model = Accesorio
     template_name = 'eliminar_accesorio.html'
 
