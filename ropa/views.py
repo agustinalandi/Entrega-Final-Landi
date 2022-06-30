@@ -13,8 +13,6 @@ from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
 # Create your views here.
 
 def index(request):
-    print(request.user)
-    print(request.user.is_authenticated)
     return render(request, 'index.html')
 
 def contacto(request):
