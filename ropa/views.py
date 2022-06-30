@@ -6,8 +6,8 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ropa.models import Pedido, Prenda, Accesorio
-from ropa.forms import Pedido_form, Prenda_form, Accesorio_form
+from ropa.models import Pedido, Prenda
+from ropa.forms import Pedido_form, Prenda_form
 
 
 # Create your views here.
@@ -99,33 +99,3 @@ class Eliminar_pedido(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse('lista_pedidos')
 
-class Listar_accesorios(ListView):
-    model = Accesorio
-    template_name = 'lista_accesorios.html'
-
-class Crear_accesorio(LoginRequiredMixin, CreateView):
-    model = Accesorio
-    template_name = 'crear_accesorio.html'
-    fields = '__all__'
-    
-    def get_success_url(self):
-        return reverse('detalle_accesorio', kwargs={'pk':self.object.pk})
-
-class Actualizar_accesorio(LoginRequiredMixin, UpdateView):
-    model = Accesorio
-    template_name = 'actualizar_accesorio.html'
-    fields = '__all__'
-
-    def get_success_url(self):
-        return reverse('detalle_accesorio', kwargs= {'pk':self.object.pk})
-
-class Detallar_accesorio(DetailView):
-    model = Accesorio
-    template_name = 'detalle_accesorio.html'
-
-class Eliminar_accesorio(LoginRequiredMixin, DeleteView):
-    model = Accesorio
-    template_name = 'eliminar_accesorio.html'
-
-    def get_success_url(self):
-        return reverse('listar_accesorios')

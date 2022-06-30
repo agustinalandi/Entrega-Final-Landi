@@ -8,6 +8,7 @@ class Pedido(models.Model):
     precio = models.FloatField()
     fecha_pedido = models.DateField(default=now)
     es_temporada_actual = models.BooleanField(default=True)
+    imagen_pedido = models.ImageField(upload_to='imagenes_pedidos')
 
     class Meta:
         verbose_name = 'Pedido'
@@ -22,12 +23,3 @@ class Prenda(models.Model):
         verbose_name = 'Prenda'
         verbose_name_plural = 'Prendas'
 
-class Accesorio(models.Model):
-    tipo = models.CharField(max_length=50)
-    talle_accesorio = models.IntegerField()
-    color_accesorio = models.CharField(max_length=70)
-    es_para_regalo = models.BooleanField(default=True)
-
-    class Meta:
-        verbose_name = 'Accesorio'
-        verbose_name_plural = 'Accesorios'
