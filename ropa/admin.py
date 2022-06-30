@@ -4,7 +4,7 @@ from ropa.models import Pedido, Prenda
 # Register your models here.
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ['prenda', 'fecha_pedido', 'precio', 'es_temporada_actual']
+    list_display = ['prenda', 'fecha_pedido', 'precio', 'es_temporada_actual', 'imagen_pedido']
 
 @admin.register(Prenda)
 class PrendaAdmin(admin.ModelAdmin):
