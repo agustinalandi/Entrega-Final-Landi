@@ -10,11 +10,12 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{object.tipo}}</h5>
-                    <p class="card-text">{{object.talle_accesorio}}</p>
-                    <p class="card-text">{{object.color_accesorio}}</p>
+                    <p class="card-text">{{object.color}}</p>
                     <p class="card-text">
-                        El accesorio es de la temporada actual: {{object.es_para_regalo}}
+                        El accesorio es resistente al agua: {{object.es_resistente_agua}}
                     </p>
+                    <p class="card-text">${{object.precio}}</p>
+                    <p class="card-text">{{object.imagen_accesorio}}</p>
                     <a href="/accesorios/actualizar_accesorio/{{object.id}}/" class="btn btn-primary">Editar</a>
                     <a href="/accesorios/eliminar_accesorio/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>

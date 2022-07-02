@@ -14,7 +14,7 @@ class Listar_accesorios(ListView):
 class Crear_accesorio(LoginRequiredMixin, CreateView):
     model = Accesorio
     template_name = 'crear_accesorio.html'
-    fields = ['tipo', 'talle_accesorio', 'color_accesorio', 'es_para_regalo']
+    fields = ['tipo', 'color', 'es_resistente_agua', 'precio']
     
     def get_success_url(self):
         return reverse('detalle_accesorio', kwargs={'pk':self.object.pk})
@@ -22,7 +22,7 @@ class Crear_accesorio(LoginRequiredMixin, CreateView):
 class Actualizar_accesorio(LoginRequiredMixin, UpdateView):
     model = Accesorio
     template_name = 'actualizar_accesorio.html'
-    fields = ['tipo', 'talle_accesorio', 'color_accesorio', 'es_para_regalo']
+    fields = ['tipo', 'color', 'es_resistente_agua', 'precio']
 
     def get_success_url(self):
         return reverse('detalle_accesorio', kwargs= {'pk':self.object.pk})

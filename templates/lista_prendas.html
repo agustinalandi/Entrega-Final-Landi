@@ -13,8 +13,13 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{prenda.nombre}}</h5>
-                    <p class="card-text">{{prenda.talle}}</p>
                     <p class="card-text">{{prenda.color}}</p>
+                    <p class="card-text">{{prenda.tipo_tela}}</p>
+                    <p class="card-text">
+                        La prenda es de la temporada actual: {{prenda.es_temporada_actual}}
+                    </p>
+                    <p class="card-text">${{prenda.precio}}</p>
+                    <p class="card-text">{{prenda.imagen_prenda}}</p>
                     <a href="/ropa/detalle_prenda/{{prenda.id}}/" class="btn btn-primary">Ver mas</a>
                 </div>
             </div>

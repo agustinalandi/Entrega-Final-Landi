@@ -10,8 +10,13 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{object.nombre}}</h5>
-                    <p class="card-text">{{object.talle}}</p>
                     <p class="card-text">{{object.color}}</p>
+                    <p class="card-text">{{object.tipo_tela}}</p>
+                    <p class="card-text">
+                        La prenda es de la temporada actual: {{es_temporada_actual}}
+                    </p>
+                    <p class="card-text">${{object.precio}}</p>
+                    <p class="card-text">{{object.imagen_prenda}}</p>
                     <a href="/ropa/actualizar_prenda/{{object.id}}" class="btn btn-primary">Editar</a>
                     <a href="/ropa/eliminar_prenda/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>

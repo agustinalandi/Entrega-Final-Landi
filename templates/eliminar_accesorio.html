@@ -7,9 +7,9 @@
 {% block contenido %}
 
 {% if accesorio %}
-    <h2>Estas por eliminar el accesorio {{accesorio.prenda}}, estas seguro?</h2>
+    <h2>Estas por eliminar el accesorio {{object.prenda}}, estas seguro?</h2>
 
-    <form action = "/accesorios/eliminar_accesorio/{{accesorio.id}}/" method = "POST">
+    <form action = "/accesorios/eliminar_accesorio/{{object.id}}/" method = "POST">
         {% csrf_token %}
         <button class="btn btn-danger" type="submit">Eliminar</button>
     </form>

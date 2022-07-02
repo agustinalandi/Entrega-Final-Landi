@@ -7,9 +7,9 @@
 {% block contenido %}
 
 {% if pedido %}
-    <h2>Estas por eliminar el pedido {{pedido.prenda}}, estas seguro?</h2>
+    <h2>Estas por eliminar el pedido {{object.prenda}}, estas seguro?</h2>
 
-    <form action = "/ropa/eliminar_pedido/{{pedido.id}}/" method = "POST">
+    <form action = "/ropa/eliminar_pedido/{{object.id}}/" method = "POST">
         {% csrf_token %}
         <button class="btn btn-danger" type="submit">Eliminar</button>
     </form>

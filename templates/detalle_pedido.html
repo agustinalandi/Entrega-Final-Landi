@@ -10,11 +10,12 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{object.prenda}}</h5>
-                    <p class="card-text">{{object.fecha_pedido}}</p>
-                    <p class="card-text">{{object.precio}}</p>
+                    <p class="card-text">{{object.talle}}</p>
+                    <p class="card-text">{{object.color}}</p>
                     <p class="card-text">
-                        El pedido es de la temporada actual: {{object.es_temporada_actual}}
+                        La prenda es estampada: {{object.tiene_estampado}}
                     </p>
+                    <p class="card-text">{{object.fecha_pedido}}</p>
                     <a href="/ropa/actualizar_pedido/{{object.id}}" class="btn btn-primary">Editar</a>
                     <a href="/ropa/eliminar_pedido/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>

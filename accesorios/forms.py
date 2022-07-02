@@ -5,3 +5,4 @@ class Accesorio_form(forms.ModelForm):
     class Meta:
         model = Accesorio
         fields = '__all__'
+        
