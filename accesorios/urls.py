@@ -12,6 +12,5 @@ urlpatterns = [
     path('actualizar_accesorio/<int:pk>/', Actualizar_accesorio.as_view(), name = 'actualizar_accesorio'),
     path('eliminar_accesorio/<int:pk>/', Eliminar_accesorio.as_view(), name = 'eliminar_accesorio'),
 
-
-]
+] 
 

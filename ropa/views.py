@@ -25,7 +25,7 @@ class Listar_prendas(ListView):
 class Crear_prenda(LoginRequiredMixin, CreateView):
     model = Prenda
     template_name = 'prendas/crear_prenda.html'
-    fields = ['nombre', 'color', 'tipo_tela', 'es_temporada_actual', 'precio']
+    fields = '__all__'
 
     def get_success_url(self):
         return reverse('detalle_prenda', kwargs={'pk':self.object.pk})
@@ -33,7 +33,7 @@ class Crear_prenda(LoginRequiredMixin, CreateView):
 class Actualizar_prenda(LoginRequiredMixin, UpdateView):
     model = Prenda
     template_name = 'prendas/actualizar_prenda.html'
-    fields = ['nombre', 'color', 'tipo_tela', 'es_temporada_actual', 'precio']
+    fields = '__all__'
 
     def get_success_url(self):
         return reverse('detalle_prenda', kwargs= {'pk':self.object.pk})
@@ -56,7 +56,7 @@ class Listar_pedidos(ListView):
 class Crear_pedido(LoginRequiredMixin, CreateView):
     model = Pedido
     template_name = 'pedidos/crear_pedido.html'
-    fields = ['prenda', 'talle', 'color', 'tiene_estampado','fecha_pedido']
+    fields = '__all__'
     
     def get_success_url(self):
         return reverse('detalle_pedido', kwargs={'pk':self.object.pk})
@@ -64,7 +64,7 @@ class Crear_pedido(LoginRequiredMixin, CreateView):
 class Actualizar_pedido(LoginRequiredMixin, UpdateView):
     model = Pedido
     template_name = 'pedidos/actualizar_pedido.html'
-    fields = ['prenda', 'talle', 'color', 'tiene_estampado']
+    fields = '__all__'
 
     def get_success_url(self):
         return reverse('detalle_pedido', kwargs= {'pk':self.object.pk})

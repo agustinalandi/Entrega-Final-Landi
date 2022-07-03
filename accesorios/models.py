@@ -6,11 +6,11 @@ class Accesorio(models.Model):
     color = models.CharField(max_length=70)
     es_resistente_agua = models.BooleanField(default=True)
     precio = models.IntegerField()
-    imagen_accesorio = models.ImageField(upload_to='imagenes_accesorios')
+    imagen_accesorio = models.ImageField(upload_to='imagenes_accesorios', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Accesorio'
         verbose_name_plural = 'Accesorios'
     
     def __str__(self):
-        return self.name
+        return self.tipo

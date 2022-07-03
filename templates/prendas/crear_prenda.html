@@ -8,7 +8,7 @@
 
     {% if form %}
         <h2 style="margin-left:25rem;">Complete los datos para cargar una prenda:</h2>
-        <form method="POST" action="" style="margin-left:35rem;margin-top:7rem">
+        <form method="POST" action="" style="margin-left:35rem;margin-top:7rem", enctype="multipart/form-data">
             {% csrf_token %}
             <table>
                 {{form.as_table}} 
