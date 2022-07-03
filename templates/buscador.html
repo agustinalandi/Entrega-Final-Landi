@@ -8,18 +8,21 @@
 
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
 
-        {% for pedido in pedidos %}
+    {% for pedido in pedidos %}
+
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{pedido.prenda}}</h5>
-                    <p class="card-text">{{pedido.fecha_pedido}}</p>
-                    <p class="card-text">{{pedido.precio}}</p>
+                    <p class="card-text">{{pedido.talle}}</p>
+                    <p class="card-text">{{pedido.color}}</p>
                     <p class="card-text">
-                        El pedido es de la temporada actual:{{pedido.es_temporada_actual}}
+                        La prenda es estampada: {{pedido.tiene_estampado}}
                     </p>
+                    <p class="card-text">{{pedido.fecha_pedido}}</p>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>
+    
         {% endfor %}
 
     </div>

@@ -20,11 +20,11 @@ def contacto(request):
 
 class Listar_prendas(ListView):
     model = Prenda
-    template_name = 'lista_prendas.html'
+    template_name = 'prendas/lista_prendas.html'
     
 class Crear_prenda(LoginRequiredMixin, CreateView):
     model = Prenda
-    template_name = 'crear_prenda.html'
+    template_name = 'prendas/crear_prenda.html'
     fields = ['nombre', 'color', 'tipo_tela', 'es_temporada_actual', 'precio']
 
     def get_success_url(self):
@@ -32,7 +32,7 @@ class Crear_prenda(LoginRequiredMixin, CreateView):
 
 class Actualizar_prenda(LoginRequiredMixin, UpdateView):
     model = Prenda
-    template_name = 'actualizar_prenda.html'
+    template_name = 'prendas/actualizar_prenda.html'
     fields = ['nombre', 'color', 'tipo_tela', 'es_temporada_actual', 'precio']
 
     def get_success_url(self):
@@ -40,22 +40,22 @@ class Actualizar_prenda(LoginRequiredMixin, UpdateView):
 
 class Detallar_prenda(DetailView):
     model = Prenda
-    template_name = 'detalle_prenda.html'
+    template_name = 'prendas/detalle_prenda.html'
 
 class Eliminar_prenda(LoginRequiredMixin, DeleteView):
     model = Prenda
-    template_name = 'eliminar_prenda.html'
+    template_name = 'prendas/eliminar_prenda.html'
 
     def get_success_url(self):
         return reverse('listar_prendas')
 
 class Listar_pedidos(ListView):
     model = Pedido
-    template_name = 'lista_pedidos.html'
+    template_name = 'pedidos/lista_pedidos.html'
 
 class Crear_pedido(LoginRequiredMixin, CreateView):
     model = Pedido
-    template_name = 'crear_pedido.html'
+    template_name = 'pedidos/crear_pedido.html'
     fields = ['prenda', 'talle', 'color', 'tiene_estampado','fecha_pedido']
     
     def get_success_url(self):
@@ -63,7 +63,7 @@ class Crear_pedido(LoginRequiredMixin, CreateView):
 
 class Actualizar_pedido(LoginRequiredMixin, UpdateView):
     model = Pedido
-    template_name = 'actualizar_pedido.html'
+    template_name = 'pedidos/actualizar_pedido.html'
     fields = ['prenda', 'talle', 'color', 'tiene_estampado']
 
     def get_success_url(self):
@@ -90,11 +90,11 @@ def buscar_pedido(request):
 
 class Detallar_pedido(DetailView):
     model = Pedido
-    template_name = 'detalle_pedido.html'
+    template_name = 'pedidos/detalle_pedido.html'
 
 class Eliminar_pedido(LoginRequiredMixin, DeleteView):
     model = Pedido
-    template_name = 'eliminar_pedido.html'
+    template_name = 'pedidos/eliminar_pedido.html'
 
     def get_success_url(self):
         return reverse('lista_pedidos')

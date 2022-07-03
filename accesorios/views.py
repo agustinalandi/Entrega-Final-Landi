@@ -9,11 +9,11 @@ from accesorios.forms import Accesorio_form
 
 class Listar_accesorios(ListView):
     model = Accesorio
-    template_name = 'lista_accesorios.html'
+    template_name = 'accesorios/lista_accesorios.html'
 
 class Crear_accesorio(LoginRequiredMixin, CreateView):
     model = Accesorio
-    template_name = 'crear_accesorio.html'
+    template_name = 'accesorios/crear_accesorio.html'
     fields = ['tipo', 'color', 'es_resistente_agua', 'precio']
     
     def get_success_url(self):
@@ -21,7 +21,7 @@ class Crear_accesorio(LoginRequiredMixin, CreateView):
 
 class Actualizar_accesorio(LoginRequiredMixin, UpdateView):
     model = Accesorio
-    template_name = 'actualizar_accesorio.html'
+    template_name = 'accesorios/actualizar_accesorio.html'
     fields = ['tipo', 'color', 'es_resistente_agua', 'precio']
 
     def get_success_url(self):
@@ -29,11 +29,11 @@ class Actualizar_accesorio(LoginRequiredMixin, UpdateView):
 
 class Detallar_accesorio(DetailView):
     model = Accesorio
-    template_name = 'detalle_accesorio.html'
+    template_name = 'accesorios/detalle_accesorio.html'
 
 class Eliminar_accesorio(LoginRequiredMixin, DeleteView):
     model = Accesorio
-    template_name = 'eliminar_accesorio.html'
+    template_name = 'accesorios/eliminar_accesorio.html'
 
     def get_success_url(self):
         return reverse('listar_accesorios')
