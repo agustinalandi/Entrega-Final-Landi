@@ -1,3 +1,4 @@
+from urllib.parse import MAX_CACHE_SIZE
 from django.db import models
 from django.utils.timezone import now
 
@@ -14,9 +15,13 @@ class Prenda(models.Model):
     class Meta:
         verbose_name = 'Prenda'
         verbose_name_plural = 'Prendas'
+    
+    def __str__(self):
+        return self.name
+
 
 class Pedido(models.Model):
-    prenda = models.CharField(max_length=100)
+    prenda = models.CharField(max_length=50, blank=True, null=True)
     talle = models.IntegerField()
     color = models.CharField(max_length=50)
     tiene_estampado = models.BooleanField(default=False)
@@ -25,4 +30,8 @@ class Pedido(models.Model):
     class Meta:
         verbose_name = 'Pedido'
         verbose_name_plural = 'Pedidos'
+
+    def __str__(self):
+        return self.name
+
 
