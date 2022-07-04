@@ -6,19 +6,19 @@
 
 {% block contenido %}
 
-    <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
+    <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
             <div class="card" style="width: 18rem;">
                 {% if pedido.imagen_pedido %}
-                <img src="{{pedido.imagen_pedido.url}}" class="card-img-top" alt="...">
+                <img src="{{pedido.imagen_pedido.url}}" class="w-90 p-3" alt="...">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{object.prenda}}</h5>
-                    <p class="card-text">{{object.talle}}</p>
-                    <p class="card-text">{{object.color}}</p>
+                    <p class="card-text">Talle: {{object.talle}}</p>
+                    <p class="card-text">Color: {{object.color}}</p>
                     <p class="card-text">
                         La prenda es estampada: {{object.tiene_estampado}}
                     </p>
-                    <p class="card-text">{{object.fecha_pedido}}</p>
+                    <p class="card-text">Fecha del pedido: {{object.fecha_pedido}}</p>
                     <a href="/ropa/actualizar_pedido/{{object.id}}" class="btn btn-primary">Editar</a>
                     <a href="/ropa/eliminar_pedido/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>

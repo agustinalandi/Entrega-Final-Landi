@@ -6,19 +6,19 @@
 
 {% block contenido %}
 
-    <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
+    <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
         {% for accesorio in object_list %}
             <div class="card" style="width: 18rem;">
                 {% if accesorio.imagen_accesorio %}
-                <img src="{{accesorio.imagen_accesorio.url}}" class="card-img-top" alt="...">
+                <img src="{{accesorio.imagen_accesorio.url}}" class="w-90 p-3" alt="">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{accesorio.tipo}}</h5>
-                    <p class="card-text">{{accesorio.color}}</p>
+                    <p class="card-text">Color: {{accesorio.color}}</p>
                     <p class="card-text">    
                         Resistente al agua: {{accesorio.es_resistente_agua}}
                     </p>
-                    <p class="card-text">{{accesorio.precio}}</p>
+                    <p class="card-text">Precio: ${{accesorio.precio}}</p>
                     <a href="/accesorios/detalle_accesorio/{{accesorio.id}}/" class="btn btn-primary">Ver mas</a>
                 </div>
             </div>
