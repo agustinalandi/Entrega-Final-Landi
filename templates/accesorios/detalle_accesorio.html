@@ -8,6 +8,9 @@
 
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
             <div class="card" style="width: 18rem;">
+                {% if accesorio.imagen_accesorio %}
+                <img src="{{accesorio.imagen_accesorio.url}}" class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{object.tipo}}</h5>
                     <p class="card-text">{{object.color}}</p>

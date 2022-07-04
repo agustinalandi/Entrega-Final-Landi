@@ -11,8 +11,8 @@
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
         {% for prenda in object_list %}
             <div class="card" style="width: 18rem;">
-                {% if prenda.image %}
-                <img src="{{prenda.image.url}}" class="card-img-top" alt="...">
+                {% if prenda.imagen_prenda %}
+                <img src="{{prenda.imagen_prenda.url}}" class="card-img-top" alt="...">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{prenda.nombre}}</h5>

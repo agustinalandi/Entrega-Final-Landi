@@ -8,6 +8,9 @@
 
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
             <div class="card" style="width: 18rem;">
+                {% if prenda.imagen_prenda %}
+                <img src="{{prenda.imagen_prenda.url}}" class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{object.nombre}}</h5>
                     <p class="card-text">{{object.color}}</p>
@@ -16,7 +19,6 @@
                         La prenda es de la temporada actual: {{es_temporada_actual}}
                     </p>
                     <p class="card-text">${{object.precio}}</p>
-                    <p class="card-text">{{object.imagen_prenda}}</p>
                     <a href="/ropa/actualizar_prenda/{{object.id}}" class="btn btn-primary">Editar</a>
                     <a href="/ropa/eliminar_prenda/{{object.id}}/" class="btn btn-danger">Eliminar</a>
                 </div>

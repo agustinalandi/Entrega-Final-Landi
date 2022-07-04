@@ -9,6 +9,9 @@
     <div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
         {% for pedido in object_list %}
             <div class="card" style="width: 18rem;">
+                {% if pedido.imagen_pedido %}
+                <img src="{{pedido.imagen_pedido.url}}" class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{pedido.prenda}}</h5>
                     <p class="card-text">{{pedido.talle}}</p>

@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -5,7 +6,7 @@ class User_profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
     phone = models.CharField(max_length=20)
     direction = models.CharField(max_length=50)
-    profile_picture = models.ImageField(upload_to='profile_picture')
+    profile_picture = models.ImageField(upload_to='profile_picture', default='perfil_prueba.jpg')
     
     class Meta:
         verbose_name = 'perfil'
