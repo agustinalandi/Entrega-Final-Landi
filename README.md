@@ -2,6 +2,8 @@
 
 Mi nombre es Agustina Landi y me toco hacer el trabajo de forma individual.
 
+Link al video de muestra de funcionamiento de la pagina: https://drive.google.com/file/d/1xrXxrkqYXlMFC0lBvBFxfnjB4GkkEF2h/view?usp=sharing
+
 Mi proyecto se llama Tienda. Tiene 3 aplicaciones: Ropa, Accesorios y Accounts.
 
 La idea de la pagina es la siguiente:
