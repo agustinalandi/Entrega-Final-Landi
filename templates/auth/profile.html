@@ -1,0 +1,24 @@
+{% extends 'padre.html' %}
+perfil
+{% block titulo %}
+    Perfil
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+        {% for perfil in object_list %}
+            <div class="card" style="width: 18rem;">
+                {% if perfil.profile_picture %}
+                    <img src="{{perfil.profile_picture.url}}" class="w-90 p-3" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{user.first_name}}</h5>
+                    <h5 class="card-title">{{user.last_name}}</h5>
+                    <a href="/accounts/detail_profile/{{perfil.id}}" class="btn btn-primary">Ver mas</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

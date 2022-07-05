@@ -1,0 +1,22 @@
+{% extends 'padre.html' %}
+
+{% block titulo %}
+    Eliminar Perfil
+{% endblock %}
+
+{% block contenido %}
+
+{% if accesorio %}
+    <h2>Estas por eliminar tu perfil {{object.user}}, estas seguro?</h2>
+
+    <form action = "/accounts/delete_profile/{{object.id}}/" method = "POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+    </form>
+{% else %}
+
+{{message}}
+
+{% endif %}
+
+{% endblock %}

@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 
 class User_profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
+    description = models.CharField(max_length=100, null=True, blank=True)
     phone = models.CharField(max_length=20)
-    direction = models.CharField(max_length=50)
-    profile_picture = models.ImageField(upload_to='profile_picture', default='perfil_prueba.jpg')
+    profile_picture = models.ImageField(upload_to='profile_picture', default='perfil_prueba.jpg', null=True, blank=True)
+    chosen_url = models.URLField(blank=True, null=True)
     
     class Meta:
         verbose_name = 'perfil'
